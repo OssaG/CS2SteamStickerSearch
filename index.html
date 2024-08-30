@@ -1,137 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticker Selector</title>
+    <title>CS2 Steam Sticker Search</title>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
-        
         body {
-            background-color: #121212;
+            background-color: #1e1e1e;
             color: #e0e0e0;
             font-family: Arial, sans-serif;
-            margin: 0;
+            margin: 0;    
+        }
+        h1{
+            justify-self: center;
+            color: #e0e0e0;
+            font-weight: bold;
+            font-size: calc(1.2rem + 0.5vw);
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: #e0e0e0;
+        }
+        p{
+            color: white;
+            margin-top: 30px;
             padding: 10px;
+        }
+        select {    
+            border: none;
+            width: 100%;
+            background: #1e1e1e;
+            
+        }
+        .select2-selection__rendered{
+            background: #1e1e1e;
+box-shadow:  10px 10px 30px #1a1a1a,
+             -10px -10px 30px #232323;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+background: #1e1e1e;
+box-shadow:  20px 20px 60px #1a1a1a,
+             -20px -20px 60px #232323;
+             border: 1px solid #333;
+            margin-top: 30px;
+        }
+
+        .select2-container--default .select2-selection--single,
+        .select2-container--default .select2-results__option,
+        .select2-container--default .select2-search--dropdown,
+        .select2-container--default .select2-search__field {
+            background-color: #1e1e1e;
+            color: white;
             
         }
 
-        select {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
+        .select2-container--default .select2-selection--single {
             border: 1px solid #333;
-            background-color: #1e1e1e;
-            color: white;
+            border-radius: 4px;
         }
 
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #444;
-            color: #e0e0e0;
-            cursor: pointer;
-            margin-right: 10px;
+        .select2-container--default .select2-results__option--highlighted {
+            background-color: #333;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            background-color: #333;
+            border-left: 1px solid #1e1e1e;
+        }
+        h6{
+            font-size: 10px;
             margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
+            font-weight: normal;
+            color: #e0e0e0;
+            opacity: 0.5;
+            font-style: italic;
             text-align: center;
         }
-.select2-search--dropdown, .select2-search__field{
-    background-color: #1e1e1e;
-    color: white;
-}
-.select2-container--default .select2-selection--single {
-    background-color: #1e1e1e;
-    color: white;
-    border: 1px solid #333;
-    border-radius: 4px;
+        .select2-container {
+    width: 100% !important; 
 }
 
-.select2-container--default .select2-results__option {
-    background-color: #1e1e1e;
-    color: white;
+.select2-selection--single {
+    width: 100%; 
 }
 
-.select2-container--default .select2-results__option--highlighted {
-    background-color: #333;
-    color: white;
+.select2-selection__rendered {
+    white-space: normal !important;
 }
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    top: 50%;
-    transform: translateY(-50%);
-    height: 16px;
-}
-
-.select2-container--default.select2-container--focus .select2-selection--single {
-    border-color: #444;
-}
-.select2-container--default .select2-selection--single {
-    background-color: #1e1e1e;
-    color: white;
-    border: 1px solid #333;
-    border-radius: 4px;
-}
-
-.select2-container--default .select2-results__option {
-    background-color: #1e1e1e;
-    color: white;
-}
-
-.select2-container--default .select2-results__option--highlighted {
-    background-color: #333;
-    color: white;
-}
-
-.select2-container--default .select2-search--dropdown .select2-search__field {
-    background-color: #1e1e1e;
-    color: white;
-    border: 1px solid #333;
-    border-radius: 4px;
-}
-
-.select2-container--default .select2-search--dropdown .select2-search__field:focus {
-    border-color: #444;
-}
-
-.select2-container--default .select2-results {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    top: 50%;
-    transform: translateY(-50%);
-    height: 16px;
-}
-
-.select2-container--default.select2-container--focus .select2-selection--single {
-    border-color: #444;
-}
-#select2-stickerSelector-container{
-    color: white;
-}
-p{
-    font-style: italic;
-}
+        nav {
+            background-image: linear-gradient(to bottom, #0e44aa, #1e1e1e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            padding: 0 20px;
+            color: #e0e0e0;
+        }
+ 
     </style>
 </head>
+
 <body>
     <nav>
-       <a href="https://steamcommunity.com/tradeoffer/new/?partner=110466028&token=UpxZCOnD"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/512px-Steam_icon_logo.svg.png" width="32" height="32" alt="Steam logo" /></a>
-       <a href="https://github.com/ossag"><img src="https://github.com/fluidicon.png" width="32" height="32" alt="GitHub logo" /></a>
-        <p>CS2 Steam Sticker Search</p>
-   
+        <a href="https://steamcommunity.com/tradeoffer/new/?partner=110466028&token=UpxZCOnD">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/512px-Steam_icon_logo.svg.png"
+                width="32" height="32" alt="Steam logo" />
+        </a>
+        <a href="https://github.com/ossag">
+            <img src="https://github.com/fluidicon.png" width="32" height="32" alt="GitHub logo" />
+        </a>
+        <a href="https://x.com/ossabossen">
+            <img src="https://cdn.cms-twdigitalassets.com/content/dam/about-twitter/x/brand-toolkit/logo-black.png.twimg.2560.png" width="32" height="32" alt="X" style="filter:invert(1);" />
+        </a>
+        <h1>CS2 Steam Sticker Search</h1>
     </nav>
-    <p>Choose weapon</p>
-    <select id="weaponSelector"> 
-        <option value=""></option>
+    <h6 style>My links above, please send any bugs to my X.</h6>
+
+
+    <p>Choose weapon (optional)</p>
+    <select id="weaponSelector">
+
     </select>
 
-    <p>Choose sticker</p>
-    <select id="stickerSelector"></select>
+    <p>Choose sticker 1</p>
+    <select id="stickerSelector1"></select>
+
+    <p>Choose sticker 2</p>
+    <select id="stickerSelector2"></select>
+
+    <p>Choose sticker 3</p>
+    <select id="stickerSelector3"></select>
+
+    <p>Choose sticker 4</p>
+    <select id="stickerSelector4"></select>
 
     <button onclick="openSteamMarketUrl()">Search</button>
 
@@ -139,84 +148,101 @@ p{
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
 
-        $(window).on("load", function() {
-        $(document).ready(function() {
-            // Initialize Select2 for stickerSelector
-            $('#stickerSelector').select2({
-                placeholder: 'Select a sticker',
-                allowClear: true
-
-            });
-
-            // Populate weapon options
-            const weapons = [
-                { value: "tag_weapon_ak47", text: "AK-47" },
-                { value: "tag_weapon_aug", text: "AUG" },
-                { value: "tag_weapon_awp", text: "AWP" },
-                { value: "tag_weapon_m4a4", text: "M4A4" },
-                { value: "tag_weapon_m4a1", text: "M4A1" },
-                { value: "tag_weapon_deagle", text: "Desert Eagle" },
-                { value: "tag_weapon_p250", text: "P250" },
-                { value: "tag_weapon_famas", text: "FAMAS" },
-                { value: "tag_weapon_galil", text: "Galil AR" },
-                { value: "tag_weapon_usp_silencer", text: "USP-S" },
-                { value: "tag_weapon_p90", text: "P90" },
-                { value: "tag_weapon_sg553", text: "SG553" },
-                { value: "tag_weapon_mp5", text: "MP5" },
-                { value: "tag_weapon_mac10", text: "MAC-10" },
-                { value: "tag_weapon_nova", text: "Nova" },
-                { value: "tag_weapon_sawedoff", text: "Sawed-Off" },
-                { value: "tag_weapon_mag7", text: "MAG-7" },
-                { value: "tag_weapon_bizon", text: "PP-Bizon" },
-                { value: "tag_weapon_negev", text: "Negev" },
-                { value: "tag_weapon_m249", text: "M249" },
-                { value: "tag_weapon_scar20", text: "SCAR-20" },
-                { value: "tag_weapon_g3sg1", text: "G3SG1" }
-            ];
-
-            const weaponSelector = $('#weaponSelector');
-            weapons.forEach(weapon => {
-                const option = $('<option></option>')
-                    .val(weapon.value)
-                    .text(weapon.text);
-                weaponSelector.append(option);
-            });
-
-            // Fetch stickers and update the Select2 dropdown
-            fetch('https://bymykel.github.io/CSGO-API/api/en/stickers.json')
-                .then(response => response.json())
-                .then(data => {
-                    const stickers = data;
-                    const stickerOptions = stickers.map(sticker => ({
-                        id: sticker.name.substring(10),
-                        text: sticker.name.substring(10)
-                    }));
-
-                    // Clear and populate stickerSelector with Select2
-                    $('#stickerSelector').empty().select2({
-                        data: stickerOptions,
-                        placeholder: 'Select a sticker',
-                        allowClear: true
-                    });
+        
+        $(window).on("load", function () {
+            $(document).ready(function () {
+                $("#weaponSelector").select2({
+                    placeholder: 'Select a weapon',
+                    allowClear: true
                 });
-
-            // Search button functionality
-            window.openSteamMarketUrl = function() {
-                const selectedWeapon = $('#weaponSelector').val();
-                const selectedSticker = $('#stickerSelector').val();
-                let steamMarketUrl = `https://steamcommunity.com/market/search?q=%22${encodeURIComponent(selectedSticker.replace(/_/g, ' '))}%22&descriptions=1`;
-
-                if (selectedWeapon) {
-                    steamMarketUrl += `&category_730_Weapon%5B%5D=${selectedWeapon}`;
-                }
-
-                steamMarketUrl += `&category_730_ItemSet%5B%5D=any&category_730_Quality%5B%5D=#p1_price_asc`;
-
-                window.open(steamMarketUrl, "_blank");
-            };
+                $('#stickerSelector1, #stickerSelector2, #stickerSelector3, #stickerSelector4').select2({
+                    placeholder: 'Select a sticker',
+                    allowClear: true
+                });
+                const weapons = [
+                    { value: "tag_weapon_ak47", text: "AK-47" },
+                    { value: "tag_weapon_aug", text: "AUG" },
+                    { value: "tag_weapon_awp", text: "AWP" },
+                    { value: "tag_weapon_m4a4", text: "M4A4" },
+                    { value: "tag_weapon_m4a1", text: "M4A1" },
+                    { value: "tag_weapon_deagle", text: "Desert Eagle" },
+                    { value: "tag_weapon_p250", text: "P250" },
+                    { value: "tag_weapon_famas", text: "FAMAS" },
+                    { value: "tag_weapon_galil", text: "Galil AR" },
+                    { value: "tag_weapon_usp_silencer", text: "USP-S" },
+                    { value: "tag_weapon_p90", text: "P90" },
+                    { value: "tag_weapon_sg553", text: "SG553" },
+                    { value: "tag_weapon_mp5", text: "MP5" },
+                    { value: "tag_weapon_mac10", text: "MAC-10" },
+                    { value: "tag_weapon_nova", text: "Nova" },
+                    { value: "tag_weapon_sawedoff", text: "Sawed-Off" },
+                    { value: "tag_weapon_mag7", text: "MAG-7" },
+                    { value: "tag_weapon_bizon", text: "PP-Bizon" },
+                    { value: "tag_weapon_negev", text: "Negev" },
+                    { value: "tag_weapon_m249", text: "M249" },
+                    { value: "tag_weapon_scar20", text: "SCAR-20" },
+                    { value: "tag_weapon_g3sg1", text: "G3SG1" },
+                    { value: "tag_weapon_ssg08", text: "SSG 08" },
+                    { value: "tag_weapon_xm1014", text: "XM1014" },
+                    { value: "tag_weapon_mp7", text: "MP7" },
+                    { value: "tag_weapon_mp9", text: "MP9" },
+                    { value: "tag_weapon_ump45", text: "UMP-45" },
+                    { value: "tag_weapon_tec9", text: "Tec-9" },
+                    { value: "tag_weapon_cz75a", text: "CZ75-Auto" },
+                    { value: "tag_weapon_revolver", text: "R8 Revolver" },
+                ];
+                const weaponSelector = $('#weaponSelector');
+                weapons.forEach(weapon => {
+                    const option = $('<option></option>')
+                        .val(weapon.value)
+                        .text(weapon.text);
+                    weaponSelector.append(option);
+                });
+                weaponSelector.val(null).trigger('change');
+                fetch('https://bymykel.github.io/CSGO-API/api/en/stickers.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const stickers = data;
+                        const stickerOptions = stickers.map(sticker => ({
+                            id: sticker.name.substring(10),
+                            text: sticker.name.substring(10)
+                        }));
+                        $('#stickerSelector1, #stickerSelector2, #stickerSelector3, #stickerSelector4').each(function () {
+                            $(this).empty().select2({
+                                data: stickerOptions,
+                                placeholder: 'Select a sticker',
+                                allowClear: true
+                            });
+                            $(this).val(null).trigger('change');
+                        });
+                        $('#stickerSelector1, #stickerSelector2, #stickerSelector3, #stickerSelector4').each(function () {
+                            $(this).empty().select2({
+                                data: stickerOptions,
+                                placeholder: 'Select a sticker',
+                                allowClear: true
+                            });
+                            $(this).val(null).trigger('change');
+                        });
+                    });
+                window.openSteamMarketUrl = function () {
+                    const selectedWeapon = $('#weaponSelector').val();
+                    const selectedStickers = [
+                        $('#stickerSelector1').val(),
+                        $('#stickerSelector2').val(),
+                        $('#stickerSelector3').val(),
+                        $('#stickerSelector4').val()
+                    ].filter(Boolean); 
+                    const stickersString = selectedStickers.map(sticker => sticker.replace(/_/g, ' ')).join(', ');
+                    let steamMarketUrl = `https://steamcommunity.com/market/search?q=%22${encodeURIComponent(stickersString)}%22&descriptions=1`;
+                    if (selectedWeapon) {
+                        steamMarketUrl += `&category_730_Weapon%5B%5D=${selectedWeapon}`;
+                    }
+                    steamMarketUrl += `&category_730_ItemSet%5B%5D=any&category_730_Quality%5B%5D=#p1_price_asc`;
+                    window.open(steamMarketUrl, "_blank");
+                };
+            });
         });
-     
-    });
     </script>
 </body>
+
 </html>
